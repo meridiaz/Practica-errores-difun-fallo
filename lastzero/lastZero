@@ -1,0 +1,15 @@
+1) El fallo es que para encontrar el último cero en el array se debería empezar por el final del array en lugar del por el principio. Pues si hubiera varios ceros en el array se devolvería el primer cero que se encuentra y no el último.
+La solución, por tanto sería modificar la declaración del for y recorrer el array por el final:
+for (int i = x.length-1; i >= 0; i--) .
+
+2) No es posible proporcionar un test que no ejecute la condición del for de la clase, pues en este caso, esta sentencia se va a ejecutar siempre. 
+
+3)He escrito un test llamado testForNoError, que recibe el array [0], y la salida esperada es 0. En este caso la variable i comienza valiendo 0, lo cual es correcto con la solución que yo he proporcionado (x.length = 1 por tanto: i = x.length-1 = 0). Por tanto, no tenemos error, aunque se ejecute el código de fallo. El valor devuelvo es 0, que es el esperado. 
+
+4) y 5) En este caso he escrito el test testErrorButNotDisfuntion que recibe el parámetro [0, 1, 2]. En este test se ejecuta el código de fallo, la declaración del for, pero no provoca una disfunción. En este caso comenzamos recorriendo el array en 0, i=0, cuando debería ser en i=2. A continuación, se comprueba en el if si el primer índice es nulo, y como lo es, devuelve la posición 0. Lo cual es correcto, porque no hay un cero en otra posición. Por tanto, se espera recibir un 0 y es lo que se recibe al ejecutar el código. Sin embargo, si hubiésemos probado con el array [0,1,2,0] sí hubiese aparecido una disfunción y un error.
+
+6)Para este apartado se han escrito los test testForNoErrorCorrect, testErrorButNotDisfuntionCorrect que comprueban si la solución que he propuesto pasa los tests de los apartados anteriores. El resultado es que los test son superados con éxito.
+
+También se han añadido los tests testErrorCorrect y testError ambos reciben el array [0, 1, 0], y se espera en ambos un resultado de 2. En el caso del test testError vemos que se devuelve un valor de 0, lo cual es incorrecto, pues debería ser 2. Esto es así, porque se devuelve el índice del cero que se encuentra al principio del array y no al final. 
+Sin embargo, testErrorCorrect ejecuta la solución propuesta en el primer apartado. Como vemos se devuelve un valor de 2, que es lo que se espera. 
+Por último, se ha incluido un test para comprobar si se eleva la excepción NullPointerException si se pasa como argumento un array null. Este test es pasado correctamente por el código. 

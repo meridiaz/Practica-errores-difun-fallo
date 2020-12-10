@@ -1,0 +1,13 @@
+1) El fallo se encuentra en la declaración del for del código. El bucle debe terminar en 0 y sin embargo termina en 1. La solución sería que en la cabecera de dicho for se incluya un i>=0, quedando de la siguiente forma: for (int i=x.length-1; i >= 0; i--)
+
+2) No es posible proporcionar un test que no ejecute el for de la clase, pues es la primera sentencia que aparece en el código y siempre se va a ejecutar. 
+
+3)He escrito un test llamado testForNoError, que recibe un array vacío, por tanto se ejecuta la cabecera del for, pero no se puede recorrer el array. El resultado esperado es que no se ha encontrado el elemento, lo que se traduce en un valor devuelto de -1, que es lo que se devuelve. El error del código sería que i no llega al valor 0, pero como no se ejecuta el cuerpo del for, no aparece dicho error. Otra opción sería proporcionar una entrada de [0, 1, 2] en el que se busque el número 2. La salida esperada es 2, como encuentra este número el primero, no se sigue iterando en el bucle y no se llega a tener un error. Para ello se ha escrito el test  testForNoError2, se espera recibir un 2 y es lo que se recibe. 
+
+4) y 5) En este caso he escrito el test testErrorButNotDisfuntion. En el que se ejecuta el código de error, el código de la declaración del for, pero no provoca una disfunción. En este caso  se proporciona como parámetro el array [0, 1, 2] y se pretende buscar el número 3. Por tanto, la salida esperada es -1. Como vemos, en la última iteracción del bucle el valor de i es 1, cuando debería ser 0, haciendo que este sea el error, pero ello no ocasiona una disfunción, pues el valor que se devuelve es -1.
+
+6)Para este apartado se han escrito los test testForNoErrorCorrect, testForNoError2Correct,testErrorButNotDisfuntionCorrect que comprueban que la solución propuesta en el primer apartado pasa los tests descritos en los apartados anteriores. 
+También se ha añadido dos tests testErrorCorrect y testError, en los que ambos reciben el array [0, 1, 2] y se busca el número 0. En ambos casos se espera un resultado de 0.
+En testError, se devuelve -1, que no es lo que esperamos. Por tanto, este test no ha pasado exitosamente.
+En testErrorCorrect, se ejecuta el código con la solución que he propuesto en el apartado 1), y vemos que se obtiene la salida esperada, que es 0.
+Por último, se ha incluido un test para comprobar si se eleva la excepción NullPointerException si se pasa como argumento un array null. Este test es pasado correctamente por el código. 

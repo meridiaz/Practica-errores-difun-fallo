@@ -1,0 +1,16 @@
+1) El fallo se encuentra en el if del código, que es cuando se comprueba si el número x[i] es impar o si es positivo. El error se encuentra aquí porque para los números negativos el módulo, o mejor dicho, el resto de la división entera, es negativo, y por tanto un número negativo impar no cumplirá ninguna de las dos condiciones y no se sumará en la variable count.
+Una posible solución sería hacer el valor absoluto del número, y después comprobar el resto de la división entera. De esta manera, esa parte de la condición comprobará si el número es impar sea positivo o negativo dicho número.
+Esta funcionalidad de hacer el valor absoluto nos la proporciona la librería Math de java. 
+
+2) Se puede proporcionar un código con un array vacío, entonces al comprobar la condición del for, el cuerpo de este no se ejecutará, y por tanto la condición del if no se comprobará.
+Para ello se ha escrito el test testButNoCodeError, como vemos la longitud del array es 0, por tanto i al comprobar que vale 0, y no ser menor que la longitud del array (que también es 0) no se ejecutará el cuerpo del for. Por tanto, la salida esperada del programa es 0. El test no falla, es decir, se obtiene un valor de 0, justo lo que esperamos.
+
+3) En este caso, se va a proporcionar un test de nombre  testForNoError que recibe un array que contiene [1, 2] la salida esperada es 2. Al ejecutar el test se obtiene el valor de 2, que es el valor que esperábamos, por tanto el test no ha fallado. No ha habido ningún error pues todas las variables internas valen lo que se espera. 
+
+4)En este caso no se puede proporcionar un código que genere un error, es decir, queremos que el valor de la variable count sea incorrecto, pero no genere una disfunción. Si el valor de la variable count es erróneo, el resultado no será correcto y esto se convierte en una disfunción. 
+
+6) En este último apartado se ha proporcionado el test testCodeError y testCodeErrorCorrect ambos reciben el array [-1, 2] y en ambos se espera recibir un valor de 2. El primero, ejecuta la sentencia de fallo, se genera un error, pues count debería valer 2 y no 1, y se manifiesta como una disfunción, el valor de count no es el correcto.
+Por otro lado, el ćodigo testCodeErrorCorrect ejecuta el mismo test pero en la versión del programa en la que he incluido la posible solución. Como se puede observar, en este caso el test se ejecuta correctamente devolviéndose lo que se espera.
+Asimismo se han añadido otros dos tests, testButNoCodeErrorCorrect y testForNoErrorCorrect, que ejecutan los tests de los apartados anteriores en el nuevo código con la solución propuesta, vemos que ambos test también los pasa el nuevo código. 
+Por último, se ha incluido un test para comprobar si se eleva la excepción NullPointerException si se pasa como argumento un array null. Este test es pasado correctamente por el código. 
+

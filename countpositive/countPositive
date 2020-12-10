@@ -1,0 +1,15 @@
+1) El fallo se encuentra en el if del código. En él se comprueba si el número es mayor o igual a 0, cuando debería comprobarse si es simplemente mayor a 0. La solución es sencilla, tan solo habría que poner x[i]>0 en la condición del if.
+
+2) Se puede proporcionar un código con un array vacío, entonces al comprobar la condición del for, el cuerpo de este no se ejecutará, y por tanto la condición del if no se comprobará.
+Para ello se ha escrito el test testButNoCodeError, como vemos la longitud del array es 0, por tanto i al comprobar que vale 0 y no ser menor que la longitud del array (que también es 0), no se ejecutará el cuerpo del for. Por tanto, la salida esperada del programa es 0. El test no falla y se ejecuta correctamente, es decir, se obtiene un valor de 0, que es lo que se esperaba. 
+
+3) En este caso, se va a proporcionar un test de nombre  testForNoError que recibe un array que solo contendrá dos números negativos [-1, -2], la salida esperada es 0. Se comprobará la condición del if, pero no se generará ni un error pues la variable count vale lo que se espera, tampoco se genera una disfunción. Vemos que el test no ha fallado pues se ha obtenido un valor de 0. 
+
+4)En este caso no se puede proporcionar un código que genere un error, es decir que el valor de la variable count sea incorrecto, pero no genere una disfunción. Pues si el valor de la variable count es erróneo, el resultado no será correcto y esto se convierte en una disfunción. 
+Se podría proporcionar un código con un array de dos números positivos como [1, 2], pero esto no generá un error, pues la variable count tomará el valor de 2, que es lo esperado. Por tanto, no tendríamos ni un error ni una disfunción, pero no es lo que se pide en el apartado. 
+
+6) En este último apartado se ha proporcionado el test testCodeError y testCodeErrorCorrect ambos reciben como parámetro de entrad el array [0, 1, 2] en ambos se espera recibir un valor de 2. El primer test, ejecuta la sentencia de fallo (condición del if), se genera un error, pues count debería valer 2 y no 3, y se manifiesta como una disfunción, el valor de count no es el correcto, por tanto el test no se ha superado.
+Por otro lado, el ćodigo testCodeErrorCorrect ejecuta el mismo test pero en la versión del programa en la que he incluido la posible solución. Como se puede observar, en este caso el test se ejecuta sin errores devolviéndose lo que se espera, un valor de 2.
+Asimismo se han añadido otros dos tests, testButNoCodeErrorCorrect y testForNoErrorCorrect, que ejecutan los tests de los apartados anteriores en el nuevo código con el arreglo, vemos que ambos test también lo pasa el nuevo código. 
+Por último, se ha incluido un test para comprobar si se eleva la excepción NullPointerException si se pasa como argumento un array null. Este test es pasado correctamente por el código. 
+
